@@ -3,6 +3,13 @@ var timestamp = require('time-stamp');
 
 module.exports = TKey;
 
+/**
+ * 时间结果缓存
+ *
+ * @param       {String/Function} format 日期格式化
+ * @param       {Number}          step   ttl计算时，需要追加的区间
+ * @constructor
+ */
 function TKey(format, step)
 {
 	if (!(this instanceof TKey))
@@ -10,9 +17,13 @@ function TKey(format, step)
 		return new TKey(format, step);
 	}
 
+	// 日期格式化
 	this.format = format;
+	// 过期后追加的进度
 	this.step = step || 1;
+	// 下次刷新结果时间
 	this.ttl = 0;
+	// 暂存结果
 	this.result = null;
 }
 
@@ -20,28 +31,35 @@ var proto = TKey.prototype;
 proto.toString
 	= proto.toJSON
 	= proto.one
-	= function one()
+	= function one(now)
 	{
-		var now = new Date;
+		if (!now || !now.getFullYear) now = new Date;
+
 		if (!this.ttl || this.ttl < now)
 		{
 			var mynow = new MyDate(now, this.step);
+
 			if (typeof this.format == 'string')
-			{
 				this.result = timestamp(this.format, mynow);
-			}
 			else
-			{
 				this.result = this.format(mynow);
-			}
 
 			this.ttl = +mynow.ttl();
-			debug('result:%s, ttl:%s', this.result, this.ttl);
+			debug('update result:%s, ttl:%s', this.result, this.ttl);
 		}
 
 		return this.result;
 	};
 
+
+
+/**
+ * 模拟Date对象
+ *
+ * @param       {Date}   date 时间
+ * @param       {Number} step ttl计算时，需要追加的区间
+ * @constructor
+ */
 function MyDate(date, step)
 {
 	this.date = date;
