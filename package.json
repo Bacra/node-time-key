@@ -1,0 +1,38 @@
+{
+  "name": "tkey",
+  "version": "0.1.0",
+  "description": "Time Key",
+  "main": "tkey.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "cross-env DEBUG=tkey* mocha test/test_*.js",
+    "test-cov": "istanbul cover _mocha -- test/test_* --reporter dot",
+    "test-travis": "istanbul cover _mocha --report lcovonly -- test/test_* --reporter dot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Bacra/node-tkey.git"
+  },
+  "keywords": [
+    "time",
+    "timestamp"
+  ],
+  "author": "Bacra <bacra.woo@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^3.1.0",
+    "time-stamp": "^2.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^2.0.0",
+    "eslint": "^5.0.0",
+    "eslint-config-brcjs": "^0.1.0",
+    "expect.js": "^0.3.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.5.3"
+  },
+  "bugs": {
+    "url": "https://github.com/Bacra/node-tkey/issues"
+  },
+  "homepage": "https://github.com/Bacra/node-tkey"
+}
