@@ -45,12 +45,14 @@ proto.toString
 				this.result = this.format(mynow);
 
 			this.ttl = +mynow.ttl();
+			this.onupdate();
 			debug('update result:%s, ttl:%s', this.result, this.ttl);
 		}
 
 		return this.result;
 	};
 
+proto.onupdate = function(){};
 
 
 /**
