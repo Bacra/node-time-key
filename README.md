@@ -24,8 +24,12 @@ npm install time-key --save
 var timekey = require('time-key');
 var timestamp = require('time-stamp');
 var key = timekey('YYYYMMDDHH');
-console.log(key.one());		// 2016061112
+console.log(key.key());		// 2016061112
 console.log(timestamp('YYYY/MM/DD HH:mm:ss:ms', new Date(key.ttl)));	// 2016/06/11 13:00:00:00
+
+// after 1 hour
+console.log(key.key());		// 2016061113
+console.log(timestamp('YYYY/MM/DD HH:mm:ss:ms', new Date(key.ttl)));	// 2016/06/11 14:00:00:00
 ```
 
 

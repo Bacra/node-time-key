@@ -30,8 +30,8 @@ function TimeKey(format, step)
 var proto = TimeKey.prototype;
 proto.toString
 	= proto.toJSON
-	= proto.one
-	= function one(now)
+	= proto.key
+	= function key(now)
 	{
 		if (!now || !now.getFullYear) now = new Date;
 
