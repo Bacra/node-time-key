@@ -24,6 +24,7 @@
     "time-stamp": "^2.0.0"
   },
   "devDependencies": {
+    "bluebird": "^3.5.1",
     "cross-env": "^2.0.0",
     "eslint": "^5.0.0",
     "eslint-config-brcjs": "^0.1.0",

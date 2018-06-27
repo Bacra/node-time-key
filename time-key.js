@@ -7,7 +7,7 @@ module.exports = TimeKey;
  * 时间结果缓存
  *
  * @param       {String/Function} format 日期格式化
- * @param       {Number}          step   ttl计算时，需要追加的区间
+ * @param       {Number/Function} step   ttl计算时，需要追加的区间 / onupdate handler
  * @constructor
  */
 function TimeKey(format, step)
@@ -15,6 +15,12 @@ function TimeKey(format, step)
 	if (!(this instanceof TimeKey))
 	{
 		return new TimeKey(format, step);
+	}
+
+	if (typeof step == 'function')
+	{
+		this.onupdate = step;
+		step = null;
 	}
 
 	// 日期格式化
