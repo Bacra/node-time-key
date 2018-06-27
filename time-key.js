@@ -45,7 +45,7 @@ proto.toString
 				this.result = this.format(mynow);
 
 			this.ttl = +mynow.ttl();
-			this.onupdate();
+			this.onupdate(now);
 			debug('update result:%s, ttl:%s', this.result, this.ttl);
 		}
 

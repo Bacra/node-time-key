@@ -1,6 +1,6 @@
 {
   "name": "time-key",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Time Key",
   "main": "time-key.js",
   "scripts": {
