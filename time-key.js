@@ -1,7 +1,7 @@
-var debug = require('debug')('tkey');
+var debug = require('debug')('time-key');
 var timestamp = require('time-stamp');
 
-module.exports = TKey;
+module.exports = TimeKey;
 
 /**
  * 时间结果缓存
@@ -10,11 +10,11 @@ module.exports = TKey;
  * @param       {Number}          step   ttl计算时，需要追加的区间
  * @constructor
  */
-function TKey(format, step)
+function TimeKey(format, step)
 {
-	if (!(this instanceof TKey))
+	if (!(this instanceof TimeKey))
 	{
-		return new TKey(format, step);
+		return new TimeKey(format, step);
 	}
 
 	// 日期格式化
@@ -27,7 +27,7 @@ function TKey(format, step)
 	this.result = null;
 }
 
-var proto = TKey.prototype;
+var proto = TimeKey.prototype;
 proto.toString
 	= proto.toJSON
 	= proto.one
